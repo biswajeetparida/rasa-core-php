@@ -74,7 +74,7 @@ class Request {
 		// Instantiate a new Certificate validator if none is injected
 		// as our dependency.
 		if (!isset($this->certificate)) {
-			$this->certificate = new Certificate($_SERVER['HTTP_SIGNATURECERTCHAINURL'], $_SERVER['HTTP_SIGNATURE']);
+			// $this->certificate = new Certificate($_SERVER['HTTP_SIGNATURECERTCHAINURL'], $_SERVER['HTTP_SIGNATURE']);
 		}
 		if (!isset($this->application)) {
 			$this->application = new Application($this->applicationId);
@@ -83,7 +83,7 @@ class Request {
 		// We need to ensure that the request Application ID matches our Application ID.
 		$this->application->validateApplicationId($data['session']['application']['applicationId']);
 		// Validate that the request signature matches the certificate.
-		$this->certificate->validateRequest($this->rawData);
+		// $this->certificate->validateRequest($this->rawData);
 
 
 		$requestType = $data['request']['type'];
